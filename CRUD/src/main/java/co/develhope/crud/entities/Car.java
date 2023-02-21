@@ -1,0 +1,66 @@
+package co.develhope.crud.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Entity
+@Table
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Car {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_car")
+    private long id;
+
+    @Column(name = "model_name")
+    private String modelName;
+    private String type;
+
+    /**
+     * No args constructor
+     */
+    public Car() {
+    }
+
+    /**
+     * All args constructor
+     * @param id
+     * @param modelName
+     * @param type
+     */
+    public Car(long id, String modelName, String type) {
+        this.id = id;
+        this.modelName = modelName;
+        this.type = type;
+    }
+
+    //GETTER AND SETTER
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+}
